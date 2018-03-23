@@ -39,16 +39,42 @@ class w6d5_ui_performance_testingUITests: XCTestCase {
      // XCTAssertEqual(mealName, app.tables.textFields, <#T##message: String##String#>)
     }
   
+
+  func testShowMealDetail()
+  {
+    let mealName = "Burger"
+    let numberOfCalories = 300
+     showMealDetailWith(mealName: mealName, numberOfCalories: numberOfCalories)
+//    let detailLabel = app.staticTexts["detailViewControllerLabel"]
+//    let detailLabel = app.staticTexts.element(matching: .any, identifier: "detailViewControllerLabel").label
+    
+    let detailLabel = app.staticTexts.element.label
+    
+//    let detailString  = detailLabel.value as? String
+//    let detailLabelString = detailLabel.t
+    let detailString = "\(mealName) - \(numberOfCalories.description)"
+    XCTAssertTrue(detailLabel == detailString)
+    
+    
+  }
+  
   func testDeleteMeal()
   {
     let mealName = "Burger"
     let numberOfCalories = 300
     deleteMealwtih(mealName: mealName, numberOfCalories: numberOfCalories)
-}
-  func testShowMealDetail()
-  {
-      
   }
+  
+  func showMealDetailWith(mealName: String, numberOfCalories: Int)
+  {
+      let tablesQuery = app.tables
+      let burger300StaticText = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Burger - 300"]/*[[".cells.staticTexts[\"Burger - 300\"]",".staticTexts[\"Burger - 300\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+      if burger300StaticText.exists{
+        let mealCellText = "\(mealName) - \(numberOfCalories.description)"
+        XCUIApplication().tables.staticTexts[mealCellText].tap()
+      }
+    }
+
   
   func addNewMealwith(mealName: String, numberOfCalories: Int)->()
   {
