@@ -45,15 +45,15 @@ class w6d5_ui_performance_testingUITests: XCTestCase {
     let mealName = "Burger"
     let numberOfCalories = 300
      showMealDetailWith(mealName: mealName, numberOfCalories: numberOfCalories)
-//    let detailLabel = app.staticTexts["detailViewControllerLabel"]
+    let detailLabel = app.staticTexts["detailViewControllerLabel"]
 //    let detailLabel = app.staticTexts.element(matching: .any, identifier: "detailViewControllerLabel").label
     
-    let detailLabel = app.staticTexts.element.label
+  //  let detailLabelText = detailLabel.label
     
 //    let detailString  = detailLabel.value as? String
 //    let detailLabelString = detailLabel.t
-    let detailString = "\(mealName) - \(numberOfCalories.description)"
-    XCTAssertTrue(detailLabel == detailString)
+    let detailString = "\(mealName) - \(numberOfCalories)"
+    XCTAssertEqual(detailLabel.label, detailString)
     
     
   }
