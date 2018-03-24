@@ -53,9 +53,11 @@ class w6d5_ui_performance_testingUITests: XCTestCase {
 //    let detailString  = detailLabel.value as? String
 //    let detailLabelString = detailLabel.t
     let detailString = "\(mealName) - \(numberOfCalories)"
+
+    
     XCTAssertEqual(detailLabel.label, detailString)
     
-    
+        app.navigationBars["Detail"].buttons["Master"].tap()
   }
   
   func testDeleteMeal()
